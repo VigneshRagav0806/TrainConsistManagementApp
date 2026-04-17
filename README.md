@@ -1,85 +1,81 @@
-## UC6: Map Bogie to Capacity (HashMap)
+## UC7: Sort Bogies by Capacity (Comparator)
 
 ### Overview
 
-This use case introduces HashMap to associate each bogie with its seating or load capacity, enabling the system to store and manage operational data.
+This use case introduces sorting of bogies based on seating capacity using the Comparator interface, enabling better planning and analysis.
 
 ### Objective
 
-To map bogie names to their respective capacities using a key–value structure.
+To arrange passenger bogies in ascending order of capacity using custom comparison logic.
 
 ### Drawback of Previous Approach
 
-In UC5, bogies were stored only as names. This approach lacked the ability to store additional attributes such as seating or load capacity, making the system incomplete.
+In UC6, bogies were mapped to capacities but lacked ordering. This made it difficult to compare and prioritize bogies for operational planning.
 
 ### Solution
 
-Use HashMap to create a mapping between bogie names and their capacities.
+Use Comparator to define custom sorting logic based on bogie capacity.
 
 ### Flow of Execution
 
 1. User runs the program
-2. A HashMap is created
-3. Bogie names are used as keys
-4. Capacities are stored as values
-5. Entries are inserted using put()
-6. Map is iterated using entrySet()
-7. Bogie-capacity details are displayed
+2. Bogie objects are created
+3. Bogies are stored in a List
+4. Comparator is applied to sort based on capacity
+5. Sorted bogies are displayed
 
 ### Key Concepts Used
 
-* **HashMap**
+* **Comparator Interface**
 
-  * Stores data in key–value pairs
+  * Defines custom sorting logic
 
-* **Map Interface**
+* **Custom Objects**
 
-  * Defines mapping between keys and values
+  * Bogies represented as objects with name and capacity
 
-* **put() Method**
+* **List Collection**
 
-  * Inserts key–value pairs into the map
+  * Stores multiple bogie objects dynamically
 
-* **Key–Value Association**
+* **sort() Method**
 
-  * Links bogie with its capacity
+  * Sorts elements using Comparator
 
-* **entrySet()**
+* **Lambda Expressions**
 
-  * Used to iterate over both keys and values
+  * Provides concise sorting logic
 
-* **Fast Lookup**
+* **Separation of Data and Logic**
 
-  * Allows quick retrieval using keys
+  * Keeps data structure independent from sorting behavior
 
 ### Code Summary
 
-* HashMap is created for storing bogie-capacity pairs
-* Entries added:
-
-  * Sleeper → 72
-  * AC Chair → 54
-  * First Class → 24
-* entrySet() is used to iterate and display data
+* Bogie class created with name and capacity
+* List<Bogie> used to store objects
+* Bogies added: Sleeper (72), AC Chair (56), First Class (24)
+* Sorted using Comparator.comparingInt()
+* Displayed before and after sorting
 
 ### Key Benefits
 
-* Models real-world data relationships
-* Enables capacity tracking and validation
-* Improves system design using structured data
-* Prepares for advanced features like analytics
+* Enables capacity-based decision making
+* Improves train planning efficiency
+* Demonstrates real-world sorting logic
+* Introduces object-oriented collection handling
 
 ### Output
 
-```text id="uc6output02"
+```text id="uc7output02"
 === Train Consist Management App ===
 
-Bogie Capacity Details:
-Bogie: Sleeper | Capacity: 72
-Bogie: AC Chair | Capacity: 54
+After Sorting (Ascending by Capacity):
 Bogie: First Class | Capacity: 24
+Bogie: AC Chair | Capacity: 56
+Bogie: Sleeper | Capacity: 72
 ```
 
 ### Conclusion
 
-This use case enhances the system by introducing data mapping, enabling realistic representation of bogie attributes and preparing the foundation for advanced train management features.
+This use case enhances the system by introducing intelligent ordering of bogies, making the application more practical for real-world railway management scenarios.
