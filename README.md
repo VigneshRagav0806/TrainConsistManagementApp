@@ -1,84 +1,85 @@
-## UC5: Preserve Insertion Order of Bogies (LinkedHashSet)
+## UC6: Map Bogie to Capacity (HashMap)
 
 ### Overview
 
-This use case introduces LinkedHashSet to maintain both uniqueness and insertion order of bogies in the train formation.
+This use case introduces HashMap to associate each bogie with its seating or load capacity, enabling the system to store and manage operational data.
 
 ### Objective
 
-To ensure that bogies are stored in the exact order they are added while preventing duplicate entries.
+To map bogie names to their respective capacities using a key–value structure.
 
 ### Drawback of Previous Approach
 
-In UC4, LinkedList maintained order but allowed duplicate bogies. This could result in invalid train formations.
+In UC5, bogies were stored only as names. This approach lacked the ability to store additional attributes such as seating or load capacity, making the system incomplete.
 
 ### Solution
 
-Use LinkedHashSet to combine:
-
-* Order preservation
-* Automatic duplicate prevention
+Use HashMap to create a mapping between bogie names and their capacities.
 
 ### Flow of Execution
 
 1. User runs the program
-2. Bogies are added to the train formation
-3. A duplicate bogie is intentionally inserted
-4. LinkedHashSet ignores the duplicate
-5. Final ordered formation is displayed
+2. A HashMap is created
+3. Bogie names are used as keys
+4. Capacities are stored as values
+5. Entries are inserted using put()
+6. Map is iterated using entrySet()
+7. Bogie-capacity details are displayed
 
 ### Key Concepts Used
 
-* **LinkedHashSet**
+* **HashMap**
 
-  * Maintains insertion order and ensures uniqueness
+  * Stores data in key–value pairs
 
-* **Set Interface**
+* **Map Interface**
 
-  * Prevents duplicate elements
+  * Defines mapping between keys and values
 
-* **add() Method**
+* **put() Method**
 
-  * Adds elements to the set
-  * Ignores duplicates automatically
+  * Inserts key–value pairs into the map
 
-* **Automatic Deduplication**
+* **Key–Value Association**
 
-  * No manual validation required
+  * Links bogie with its capacity
 
-* **Insertion Order Preservation**
+* **entrySet()**
 
-  * Maintains real-world train sequence
+  * Used to iterate over both keys and values
 
-* **Ordered Iteration**
+* **Fast Lookup**
 
-  * Elements are displayed in insertion order
+  * Allows quick retrieval using keys
 
 ### Code Summary
 
-* LinkedHashSet is used to store bogies
-* Bogies added: Engine, Sleeper, Cargo, Guard
-* Duplicate "Sleeper" is ignored
-* Final formation is displayed in correct order
+* HashMap is created for storing bogie-capacity pairs
+* Entries added:
+
+  * Sleeper → 72
+  * AC Chair → 54
+  * First Class → 24
+* entrySet() is used to iterate and display data
 
 ### Key Benefits
 
-* Prevents duplicate bogie attachment
-* Maintains real train sequence
-* Combines advantages of Set and List
-* Ensures predictable and safe data handling
+* Models real-world data relationships
+* Enables capacity tracking and validation
+* Improves system design using structured data
+* Prepares for advanced features like analytics
 
 ### Output
 
-```text id="uc5output02"
+```text id="uc6output02"
 === Train Consist Management App ===
 
-Final Train Formation (Insertion Order Preserved):
-[Engine, Sleeper, Cargo, Guard]
-
-Total bogies: 4
+Bogie Capacity Details:
+Bogie: Sleeper | Capacity: 72
+Bogie: AC Chair | Capacity: 54
+Bogie: First Class | Capacity: 24
 ```
 
 ### Conclusion
 
-This use case ensures that the train consist remains both unique and ordered, making it suitable for real-world railway system simulations.
+This use case enhances the system by introducing data mapping, enabling realistic representation of bogie attributes and preparing the foundation for advanced train management features.
