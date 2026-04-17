@@ -1,79 +1,83 @@
-# TrainConsistManagementApp
-## UC1: Initialize Train and Display Consist Summary
+## UC2: Add Passenger Bogies to Train (ArrayList Operations)
 
 ### Overview
 
-This use case demonstrates the initialization phase of the Train Consist Management Application. It sets up the foundational structure required to manage train bogies dynamically.
+This use case enhances the Train Consist Management Application by enabling dynamic manipulation of passenger bogies using ArrayList operations.
 
 ### Objective
 
-To initialize an empty train consist and display its initial state to the user.
+To allow users to add, remove, and verify passenger bogies dynamically.
 
 ### Flow of Execution
 
-1. User runs the application
-2. System displays a welcome message
-3. Train consist is initialized as an empty collection
-4. Initial bogie count is displayed
-5. Application remains active for further operations
+1. User runs the program
+2. Passenger bogies are added to the train consist
+3. The list of bogies is displayed
+4. A bogie is removed from the list
+5. System checks whether a specific bogie exists
+6. Final list is displayed
+7. Program continues execution
 
 ### Key Concepts Used
 
-* **Class**
-
-    * The entire application logic is encapsulated inside a Java class (`TrainApp`)
-
-* **Main Method**
-
-    * Entry point of the program:
-
-      ```java
-      public static void main(String[] args)
-      ```
-
-* **Static Keyword**
-
-    * Allows the JVM to call `main()` without creating an object
-
 * **ArrayList**
 
-    * Used to dynamically store bogies
-    * Allows resizing at runtime unlike fixed arrays
+  * A dynamic data structure that allows resizing during runtime
 
-* **List Interface**
+* **add() Method**
 
-    * Provides abstraction for working with different list implementations
+  * Adds elements to the list
 
-* **Console Output**
+* **remove() Method**
 
-    * `System.out.println()` is used to display messages
+  * Removes specified elements from the list
 
-* **Dynamic Initialization**
+* **contains() Method**
 
-    * An empty `ArrayList` is created which will later store bogies
+  * Checks if an element exists in the list
+
+* **Insertion Order Preservation**
+
+  * Maintains order of bogies as added
+
+* **CRUD Operations**
+
+  * Create → Add bogies
+  * Read → Display bogies
+  * Delete → Remove bogies
 
 ### Code Summary
 
-* A List is created using `ArrayList`
-* No bogies are added initially
-* `size()` method is used to display count (which is 0)
+* An ArrayList is created to store passenger bogies
+* Three bogies are added: Sleeper, AC Chair, First Class
+* One bogie (AC Chair) is removed
+* Existence of "Sleeper" is checked using contains()
+* Final list is displayed
 
 ### Key Benefits
 
-* Establishes the starting point of the application
-* Demonstrates program execution flow
-* Highlights the importance of dynamic data structures
-* Prepares the system for future operations like adding passenger or goods bogies
+* Demonstrates real-world dynamic list operations
+* Shows how train composition changes over time
+* Introduces CRUD operations using Java Collections
+* Helps visualize attachment and detachment of bogies
 
 ### Output
 
-```
+```text
 === Train Consist Management App ===
-Train consist initialized successfully.
-Initial number of bogies: 0
-System is ready for further operations...
+
+Passenger Bogies after addition:
+[Sleeper, AC Chair, First Class]
+
+Passenger Bogies after removal:
+[Sleeper, First Class]
+
+Sleeper bogie exists in the train.
+
+Final Passenger Bogies List:
+[Sleeper, First Class]
 ```
 
 ### Conclusion
 
-This use case lays the groundwork for the Train Consist Management System by initializing the core data structure and verifying that the application starts correctly.
+This use case builds upon UC1 by introducing dynamic operations on collections, enabling the system to simulate real-world train consist modifications.
