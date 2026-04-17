@@ -1,73 +1,74 @@
-## UC11: Validate Train ID & Cargo Codes (Regex)
+## UC12: Safety Compliance Check for Goods Bogies
 
 ### Overview
 
-This use case introduces input validation using Regular Expressions to ensure that Train IDs and Cargo Codes follow strict formats.
+This use case introduces safety validation for goods bogies using Stream API and business rules.
 
 ### Objective
 
-To validate user input before processing using regex patterns.
+To ensure that cylindrical bogies carry only petroleum cargo.
 
 ### Drawback of Previous Approach
 
-In UC10, the system assumed all inputs were valid. This can lead to incorrect data entering the system and causing failures in processing.
+Earlier use cases did not enforce domain-specific rules, allowing unsafe cargo configurations.
 
 ### Solution
 
-Use Pattern and Matcher classes with regular expressions to enforce format rules.
+Use stream-based validation with allMatch() and conditional logic.
 
 ### Flow of Execution
 
-1. User enters Train ID and Cargo Code
-2. Regex patterns are defined
-3. Patterns are compiled
-4. Matcher checks input against pattern
-5. System validates and displays result
+1. User creates a list of goods bogies
+2. List is converted into a stream
+3. allMatch() applies safety rules
+4. If all bogies satisfy rules → SAFE
+5. Else → NOT SAFE
 
 ### Key Concepts Used
 
-* **Regular Expressions (Regex)**
+* **Streams API**
 
-  * Defines input format rules
+  * Declarative processing of collections
 
-* **Pattern Class**
+* **allMatch()**
 
-  * Compiles regex for reuse
+  * Checks if all elements satisfy condition
 
-* **Matcher Class**
+* **Lambda Expressions**
 
-  * Matches input against pattern
+  * Defines rule logic inline
 
-* **matches()**
+* **Conditional Logic**
 
-  * Ensures full string match
+  * Enforces domain constraints
 
-* **Format Enforcement**
+* **Short-Circuit Evaluation**
 
-  * Validates structure before processing
+  * Stops on first failure
 
 ### Code Summary
 
-* Train ID pattern: TRN-\d{4}
-* Cargo Code pattern: PET-[A-Z]{2}
-* Pattern compiled using Pattern class
-* Matcher used to validate inputs
-* Output displays valid/invalid result
+* GoodsBogie class created
+* List of bogies initialized
+* Stream applied
+* Condition:
+
+  * Cylindrical → only Petroleum allowed
+* Boolean result determines safety
 
 ### Key Benefits
 
-* Prevents invalid data entry
-* Ensures system reliability
-* Improves data integrity
-* Introduces real-world validation logic
+* Prevents unsafe configurations
+* Enforces real-world constraints
+* Improves system reliability
+* Demonstrates domain-driven logic
 
 ### Output
 
-```text id="uc11output03"
-Train ID is VALID.
-Cargo Code is VALID.
+```text id="uc12output03"
+Train is SAFETY COMPLIANT.
 ```
 
 ### Conclusion
 
-This use case ensures that only correctly formatted data enters the system, making the application robust and reliable.
+This use case ensures that the system enforces critical safety rules, making it suitable for real-world railway logistics scenarios.
