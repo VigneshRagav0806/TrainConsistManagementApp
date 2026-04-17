@@ -1,73 +1,73 @@
-## UC10: Count Total Seats in Train (reduce)
+## UC11: Validate Train ID & Cargo Codes (Regex)
 
 ### Overview
 
-This use case introduces aggregation using the Stream API to compute total seating capacity of the train.
+This use case introduces input validation using Regular Expressions to ensure that Train IDs and Cargo Codes follow strict formats.
 
 ### Objective
 
-To calculate the total number of seats by aggregating capacities of all bogies.
+To validate user input before processing using regex patterns.
 
 ### Drawback of Previous Approach
 
-In UC9, bogies were grouped but no numerical insights were available. The system lacked the ability to compute totals required for planning.
+In UC10, the system assumed all inputs were valid. This can lead to incorrect data entering the system and causing failures in processing.
 
 ### Solution
 
-Use map() and reduce() to aggregate capacity values.
+Use Pattern and Matcher classes with regular expressions to enforce format rules.
 
 ### Flow of Execution
 
-1. User runs the program
-2. Bogie objects are created
-3. List is converted into a stream
-4. map() extracts capacity values
-5. reduce() aggregates them into a total
-6. Total seating capacity is displayed
+1. User enters Train ID and Cargo Code
+2. Regex patterns are defined
+3. Patterns are compiled
+4. Matcher checks input against pattern
+5. System validates and displays result
 
 ### Key Concepts Used
 
-* **map()**
+* **Regular Expressions (Regex)**
 
-  * Extracts capacity values from objects
+  * Defines input format rules
 
-* **reduce()**
+* **Pattern Class**
 
-  * Aggregates values into a single result
+  * Compiles regex for reuse
 
-* **Method Reference**
+* **Matcher Class**
 
-  * Uses Integer::sum for concise addition
+  * Matches input against pattern
 
-* **Stream Pipeline**
+* **matches()**
 
-  * Chains operations (map → reduce)
+  * Ensures full string match
 
-* **Functional Aggregation**
+* **Format Enforcement**
 
-  * Replaces manual loops
+  * Validates structure before processing
 
 ### Code Summary
 
-* Bogie list created
-* Stream applied
-* map() extracts capacity
-* reduce(0, Integer::sum) calculates total
-* Result displayed
+* Train ID pattern: TRN-\d{4}
+* Cargo Code pattern: PET-[A-Z]{2}
+* Pattern compiled using Pattern class
+* Matcher used to validate inputs
+* Output displays valid/invalid result
 
 ### Key Benefits
 
-* Provides real-world metrics
-* Enables capacity planning
-* Improves decision-making
-* Eliminates manual summation logic
+* Prevents invalid data entry
+* Ensures system reliability
+* Improves data integrity
+* Introduces real-world validation logic
 
 ### Output
 
-```text id="uc10output02"
-Total Seating Capacity: 232
+```text id="uc11output03"
+Train ID is VALID.
+Cargo Code is VALID.
 ```
 
 ### Conclusion
 
-This use case completes the data processing lifecycle by introducing aggregation, enabling the system to produce meaningful numerical insights.
+This use case ensures that only correctly formatted data enters the system, making the application robust and reliable.
