@@ -1,72 +1,77 @@
-## UC14: Handle Invalid Bogie Capacity (Custom Exception)
+## UC15: Safe Cargo Assignment Using try-catch-finally
 
 ### Overview
 
-This use case introduces custom exception handling to enforce valid passenger bogie capacity.
+This use case introduces runtime exception handling to safely manage cargo assignments in goods bogies.
 
 ### Objective
 
-To prevent invalid bogies from being created using fail-fast validation.
+To prevent unsafe cargo assignments and handle them gracefully without crashing the system.
 
 ### Drawback of Previous Approach
 
-Earlier use cases assumed valid input, allowing invalid capacity values such as zero or negative numbers.
+In UC14, validation occurred during object creation. However, runtime operations such as cargo assignment were not protected.
 
 ### Solution
 
-Create a custom exception and validate capacity during object creation.
+Use try-catch-finally to handle unsafe conditions dynamically.
 
 ### Flow of Execution
 
-1. User attempts to create a passenger bogie
-2. Constructor validates capacity
-3. If capacity ≤ 0 → exception is thrown
-4. If valid → bogie is created
-5. System continues execution safely
+1. User assigns cargo to a bogie
+2. System checks safety rules
+3. If unsafe → exception is thrown
+4. Exception is caught and handled
+5. finally block executes
+6. Program continues execution
 
 ### Key Concepts Used
 
+* **try-catch-finally**
+
+  * Structured exception handling
+
+* **Runtime Exception**
+
+  * Unchecked exception for runtime errors
+
 * **Custom Exception**
 
-  * User-defined exception for invalid capacity
-
-* **Exception Inheritance**
-
-  * Extends Exception class
+  * CargoSafetyException for domain-specific errors
 
 * **throw**
 
-  * Raises exception when rule fails
+  * Signals unsafe condition
 
-* **throws**
+* **Graceful Failure Handling**
 
-  * Declares exception in method signature
+  * Prevents crashes
 
-* **Fail-Fast Validation**
+* **finally Block**
 
-  * Stops invalid object creation early
+  * Executes regardless of success or failure
 
 ### Code Summary
 
-* InvalidCapacityException class created
-* Constructor validates capacity
-* Exception thrown for invalid values
-* Valid bogies added to list
-* Invalid bogies rejected
+* GoodsBogie class created
+* assignCargo() method contains try-catch-finally
+* Unsafe assignment throws exception
+* Exception is handled without stopping program
+* finally block logs completion
 
 ### Key Benefits
 
-* Prevents invalid data entry
-* Protects system integrity
-* Improves reliability
-* Demonstrates defensive programming
+* Prevents application crashes
+* Handles runtime errors safely
+* Ensures system continuity
+* Demonstrates defensive coding practices
 
 ### Output
 
-```text id="uc14output02"
-Exception Occurred: Capacity must be greater than zero
+```text id="uc15output02"
+Error: Unsafe Assignment: Rectangular bogie cannot carry Petroleum
 ```
 
 ### Conclusion
 
-This use case ensures that invalid bogie data is rejected at creation time, making the system robust and error-resistant.
+This use case ensures that runtime errors are handled gracefully, maintaining system stability and reliability during operations.
