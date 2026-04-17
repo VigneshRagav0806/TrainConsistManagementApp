@@ -1,4 +1,5 @@
-import java.util.LinkedList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class TrainApp {
 
@@ -6,36 +7,24 @@ public class TrainApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Create LinkedList for train consist
-        LinkedList<String> trainConsist = new LinkedList<>();
+        // Create LinkedHashSet for train formation
+        Set<String> trainFormation = new LinkedHashSet<>();
 
-        // Add bogies in order
-        trainConsist.add("Engine");
-        trainConsist.add("Sleeper");
-        trainConsist.add("AC");
-        trainConsist.add("Cargo");
-        trainConsist.add("Guard");
+        // Add bogies
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
 
-        System.out.println("\nInitial Train Consist:");
-        System.out.println(trainConsist);
+        // Attempt to add duplicate bogie
+        trainFormation.add("Sleeper"); // Duplicate (will be ignored)
 
-        // Insert Pantry Car at position 2 (index 1)
-        trainConsist.add(1, "Pantry Car");
+        // Display final formation
+        System.out.println("\nFinal Train Formation (Insertion Order Preserved):");
+        System.out.println(trainFormation);
 
-        System.out.println("\nAfter inserting Pantry Car at position 2:");
-        System.out.println(trainConsist);
+        System.out.println("\nTotal bogies: " + trainFormation.size());
 
-        // Remove first and last bogie
-        trainConsist.removeFirst();
-        trainConsist.removeLast();
-
-        System.out.println("\nAfter removing first and last bogie:");
-        System.out.println(trainConsist);
-
-        // Final ordered consist
-        System.out.println("\nFinal Train Consist:");
-        System.out.println(trainConsist);
-
-        System.out.println("\nTrain order maintained successfully.");
+        System.out.println("\nNo duplicate bogies allowed. Order maintained successfully.");
     }
 }

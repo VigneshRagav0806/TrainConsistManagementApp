@@ -1,86 +1,84 @@
-## UC4: Maintain Ordered Bogie IDs (LinkedList)
+## UC5: Preserve Insertion Order of Bogies (LinkedHashSet)
 
 ### Overview
 
-This use case introduces LinkedList to maintain the physical order of bogies in a train. Unlike HashSet, which does not preserve order, LinkedList models real-world train chaining effectively.
+This use case introduces LinkedHashSet to maintain both uniqueness and insertion order of bogies in the train formation.
 
 ### Objective
 
-To maintain an ordered sequence of bogies and allow efficient insertion and removal operations.
+To ensure that bogies are stored in the exact order they are added while preventing duplicate entries.
 
 ### Drawback of Previous Approach
 
-In UC3, HashSet ensured uniqueness but failed to maintain order. However, train bogies must follow a fixed physical sequence.
+In UC4, LinkedList maintained order but allowed duplicate bogies. This could result in invalid train formations.
 
 ### Solution
 
-Use LinkedList to preserve order and support efficient modifications.
+Use LinkedHashSet to combine:
+
+* Order preservation
+* Automatic duplicate prevention
 
 ### Flow of Execution
 
 1. User runs the program
-2. Train consist is created using LinkedList
-3. Bogies are added in sequence
-4. A new bogie is inserted at a specific position
-5. First and last bogies are removed
-6. Final ordered consist is displayed
+2. Bogies are added to the train formation
+3. A duplicate bogie is intentionally inserted
+4. LinkedHashSet ignores the duplicate
+5. Final ordered formation is displayed
 
 ### Key Concepts Used
 
-* **LinkedList**
+* **LinkedHashSet**
 
-  * A doubly linked list implementation of List
+  * Maintains insertion order and ensures uniqueness
 
-* **Node Structure**
+* **Set Interface**
 
-  * Each element links to previous and next nodes
+  * Prevents duplicate elements
 
 * **add() Method**
 
-  * Adds elements to the list
+  * Adds elements to the set
+  * Ignores duplicates automatically
 
-* **add(index, element)**
+* **Automatic Deduplication**
 
-  * Inserts element at a specific position
+  * No manual validation required
 
-* **removeFirst() / removeLast()**
-
-  * Removes elements from beginning and end
-
-* **Order Preservation**
+* **Insertion Order Preservation**
 
   * Maintains real-world train sequence
 
+* **Ordered Iteration**
+
+  * Elements are displayed in insertion order
+
 ### Code Summary
 
-* LinkedList is used to store bogies
-* Initial bogies: Engine, Sleeper, AC, Cargo, Guard
-* Pantry Car inserted at position 2
-* First and last bogies removed
-* Final ordered list displayed
+* LinkedHashSet is used to store bogies
+* Bogies added: Engine, Sleeper, Cargo, Guard
+* Duplicate "Sleeper" is ignored
+* Final formation is displayed in correct order
 
 ### Key Benefits
 
-* Accurately models train structure
-* Efficient insertion and deletion
-* Maintains strict ordering
-* Demonstrates node-based data structure
+* Prevents duplicate bogie attachment
+* Maintains real train sequence
+* Combines advantages of Set and List
+* Ensures predictable and safe data handling
 
 ### Output
 
-```text id="uc4output02"
+```text id="uc5output02"
 === Train Consist Management App ===
 
-Initial Train Consist:
-[Engine, Sleeper, AC, Cargo, Guard]
+Final Train Formation (Insertion Order Preserved):
+[Engine, Sleeper, Cargo, Guard]
 
-After inserting Pantry Car at position 2:
-[Engine, Pantry Car, Sleeper, AC, Cargo, Guard]
-
-After removing first and last bogie:
-[Pantry Car, Sleeper, AC, Cargo]
+Total bogies: 4
 ```
 
 ### Conclusion
 
-This use case ensures that train composition follows a strict order, making the system closer to real-world railway operations.
+This use case ensures that the train consist remains both unique and ordered, making it suitable for real-world railway system simulations.
