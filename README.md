@@ -1,79 +1,75 @@
-# TrainConsistManagementApp
-## UC1: Initialize Train and Display Consist Summary
+## UC9: Group Bogies by Type (Collectors.groupingBy)
 
 ### Overview
 
-This use case demonstrates the initialization phase of the Train Consist Management Application. It sets up the foundational structure required to manage train bogies dynamically.
+This use case introduces grouping of bogies using the Stream API, transforming flat data into structured categories.
 
 ### Objective
 
-To initialize an empty train consist and display its initial state to the user.
+To group bogies based on their type using Collectors.groupingBy().
+
+### Drawback of Previous Approach
+
+In UC8, bogies were filtered but remained in a flat list. This made it difficult to categorize and analyze data effectively.
+
+### Solution
+
+Use groupingBy() to organize bogies into categories.
 
 ### Flow of Execution
 
-1. User runs the application
-2. System displays a welcome message
-3. Train consist is initialized as an empty collection
-4. Initial bogie count is displayed
-5. Application remains active for further operations
+1. User runs the program
+2. Bogie objects are created and stored in a list
+3. List is converted into a stream
+4. groupingBy() is applied using a classification function
+5. Result is stored in a Map
+6. Grouped data is displayed
 
 ### Key Concepts Used
 
-* **Class**
+* **Collectors.groupingBy()**
 
-    * The entire application logic is encapsulated inside a Java class (`TrainApp`)
+  * Groups elements into categories
 
-* **Main Method**
+* **Stream API**
 
-    * Entry point of the program:
+  * Enables data transformation pipeline
 
-      ```java
-      public static void main(String[] args)
-      ```
+* **Map Structure**
 
-* **Static Keyword**
+  * Stores grouped results as key-value pairs
 
-    * Allows the JVM to call `main()` without creating an object
+* **Lambda Classification**
 
-* **ArrayList**
+  * Defines grouping logic
 
-    * Used to dynamically store bogies
-    * Allows resizing at runtime unlike fixed arrays
+* **Data Aggregation**
 
-* **List Interface**
-
-    * Provides abstraction for working with different list implementations
-
-* **Console Output**
-
-    * `System.out.println()` is used to display messages
-
-* **Dynamic Initialization**
-
-    * An empty `ArrayList` is created which will later store bogies
+  * Organizes elements into logical clusters
 
 ### Code Summary
 
-* A List is created using `ArrayList`
-* No bogies are added initially
-* `size()` method is used to display count (which is 0)
+* Bogie list created with multiple entries
+* Stream applied using stream()
+* groupingBy(Bogie::getName) used
+* Result stored in Map<String, List<Bogie>>
+* Grouped data displayed category-wise
 
 ### Key Benefits
 
-* Establishes the starting point of the application
-* Demonstrates program execution flow
-* Highlights the importance of dynamic data structures
-* Prepares the system for future operations like adding passenger or goods bogies
+* Organizes data into meaningful groups
+* Supports reporting and analytics
+* Improves readability and structure
+* Enables advanced data processing
 
 ### Output
 
-```
-=== Train Consist Management App ===
-Train consist initialized successfully.
-Initial number of bogies: 0
-System is ready for further operations...
+```text id="uc9output02"
+Category: Sleeper → 2 bogies
+Category: AC Chair → 2 bogies
+Category: First Class → 1 bogie
 ```
 
 ### Conclusion
 
-This use case lays the groundwork for the Train Consist Management System by initializing the core data structure and verifying that the application starts correctly.
+This use case transforms raw data into structured information, enabling better decision-making and preparing the system for reporting and analytics.
