@@ -1,74 +1,72 @@
-## UC13: Performance Comparison (Loops vs Streams)
+## UC14: Handle Invalid Bogie Capacity (Custom Exception)
 
 ### Overview
 
-This use case compares the performance of loop-based and stream-based filtering using precise time measurement.
+This use case introduces custom exception handling to enforce valid passenger bogie capacity.
 
 ### Objective
 
-To measure execution time of two different approaches and make evidence-based decisions.
+To prevent invalid bogies from being created using fail-fast validation.
 
 ### Drawback of Previous Approach
 
-In UC12, Streams were used for clean logic, but no performance comparison was done. Developers may incorrectly assume Streams are always faster.
+Earlier use cases assumed valid input, allowing invalid capacity values such as zero or negative numbers.
 
 ### Solution
 
-Use System.nanoTime() to benchmark both loop and stream approaches.
+Create a custom exception and validate capacity during object creation.
 
 ### Flow of Execution
 
-1. User runs the program
-2. Large dataset of bogies is created
-3. Loop-based filtering is executed and timed
-4. Stream-based filtering is executed and timed
-5. Execution times are compared
-6. Results are displayed
+1. User attempts to create a passenger bogie
+2. Constructor validates capacity
+3. If capacity ≤ 0 → exception is thrown
+4. If valid → bogie is created
+5. System continues execution safely
 
 ### Key Concepts Used
 
-* **System.nanoTime()**
+* **Custom Exception**
 
-  * High precision time measurement
+  * User-defined exception for invalid capacity
 
-* **Loop-Based Processing**
+* **Exception Inheritance**
 
-  * Traditional iteration using for-each loop
+  * Extends Exception class
 
-* **Stream API**
+* **throw**
 
-  * Declarative filtering using filter()
+  * Raises exception when rule fails
 
-* **Performance Benchmarking**
+* **throws**
 
-  * Measuring execution time
+  * Declares exception in method signature
 
-* **Evidence-Based Optimization**
+* **Fail-Fast Validation**
 
-  * Making decisions based on actual results
+  * Stops invalid object creation early
 
 ### Code Summary
 
-* Large list of bogies created
-* Loop filters bogies with capacity > 60
-* Stream filters bogies with same condition
-* Execution time measured using nanoTime()
-* Results compared
+* InvalidCapacityException class created
+* Constructor validates capacity
+* Exception thrown for invalid values
+* Valid bogies added to list
+* Invalid bogies rejected
 
 ### Key Benefits
 
-* Demonstrates real performance differences
-* Encourages measurement over assumptions
-* Teaches benchmarking techniques
-* Builds optimization mindset
+* Prevents invalid data entry
+* Protects system integrity
+* Improves reliability
+* Demonstrates defensive programming
 
 ### Output
 
-```text
-Loop Execution Time: XXXXX ns
-Stream Execution Time: XXXXX ns
+```text id="uc14output02"
+Exception Occurred: Capacity must be greater than zero
 ```
 
 ### Conclusion
 
-This use case emphasizes that performance decisions should be based on measurement rather than assumptions, balancing readability and efficiency.
+This use case ensures that invalid bogie data is rejected at creation time, making the system robust and error-resistant.
