@@ -1,77 +1,86 @@
-## UC3: Track Unique Bogie IDs (Set – HashSet)
+## UC4: Maintain Ordered Bogie IDs (LinkedList)
 
 ### Overview
 
-This use case introduces the concept of uniqueness in the Train Consist Management System by using a Set data structure to prevent duplicate bogie IDs.
+This use case introduces LinkedList to maintain the physical order of bogies in a train. Unlike HashSet, which does not preserve order, LinkedList models real-world train chaining effectively.
 
 ### Objective
 
-To ensure that no duplicate bogie IDs are stored in the system.
+To maintain an ordered sequence of bogies and allow efficient insertion and removal operations.
 
 ### Drawback of Previous Approach
 
-In UC2, bogies were stored using a List, which allows duplicate entries. This could lead to multiple bogies having the same ID, causing inconsistencies in train management.
+In UC3, HashSet ensured uniqueness but failed to maintain order. However, train bogies must follow a fixed physical sequence.
 
 ### Solution
 
-Use a HashSet to automatically enforce uniqueness.
+Use LinkedList to preserve order and support efficient modifications.
 
 ### Flow of Execution
 
 1. User runs the program
-2. Bogie IDs are added to the system
-3. Duplicate IDs are intentionally inserted
-4. HashSet automatically removes duplicates
-5. Unique bogie IDs are displayed
+2. Train consist is created using LinkedList
+3. Bogies are added in sequence
+4. A new bogie is inserted at a specific position
+5. First and last bogies are removed
+6. Final ordered consist is displayed
 
 ### Key Concepts Used
 
-* **Set Interface**
+* **LinkedList**
 
-  * A collection that does not allow duplicate elements
+  * A doubly linked list implementation of List
 
-* **HashSet**
+* **Node Structure**
 
-  * Implementation of Set using hashing for fast access
+  * Each element links to previous and next nodes
 
 * **add() Method**
 
-  * Adds elements to the set
-  * Ignores duplicates automatically
+  * Adds elements to the list
 
-* **Automatic Deduplication**
+* **add(index, element)**
 
-  * No manual checking required for duplicates
+  * Inserts element at a specific position
 
-* **Unordered Storage**
+* **removeFirst() / removeLast()**
 
-  * Elements are not stored in insertion order
+  * Removes elements from beginning and end
+
+* **Order Preservation**
+
+  * Maintains real-world train sequence
 
 ### Code Summary
 
-* A HashSet is created to store bogie IDs
-* Duplicate IDs are added intentionally
-* HashSet filters out duplicates automatically
-* Final set contains only unique values
+* LinkedList is used to store bogies
+* Initial bogies: Engine, Sleeper, AC, Cargo, Guard
+* Pantry Car inserted at position 2
+* First and last bogies removed
+* Final ordered list displayed
 
 ### Key Benefits
 
-* Enforces real-world business rules (unique IDs)
-* Prevents data duplication and corruption
-* Improves data integrity
-* Demonstrates when to use Set instead of List
+* Accurately models train structure
+* Efficient insertion and deletion
+* Maintains strict ordering
+* Demonstrates node-based data structure
 
 ### Output
 
-```text id="uc3output02"
+```text id="uc4output02"
 === Train Consist Management App ===
 
-Bogie IDs in the Train (Unique Only):
-[BG101, BG102, BG103]
+Initial Train Consist:
+[Engine, Sleeper, AC, Cargo, Guard]
 
-Total unique bogies: 3
+After inserting Pantry Car at position 2:
+[Engine, Pantry Car, Sleeper, AC, Cargo, Guard]
+
+After removing first and last bogie:
+[Pantry Car, Sleeper, AC, Cargo]
 ```
 
 ### Conclusion
 
-This use case strengthens the system by ensuring data uniqueness, a critical requirement in real-world applications like railway management systems.
+This use case ensures that train composition follows a strict order, making the system closer to real-world railway operations.
