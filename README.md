@@ -1,72 +1,69 @@
-## UC16: Sort Passenger Bogies by Capacity (Bubble Sort – Algorithm Intro)
+## UC17: Sort Bogie Names Using Arrays.sort()
 
 ### Overview
 
-This use case introduces manual sorting using the Bubble Sort algorithm to help understand how sorting works internally.
+This use case introduces Java's built-in sorting mechanism using Arrays.sort() to efficiently sort bogie names.
 
 ### Objective
 
-To sort passenger bogie capacities using a basic comparison-based algorithm without using built-in methods.
+To sort bogie type names alphabetically using Java’s optimized library function.
 
 ### Drawback of Previous Approach
 
-Earlier use cases relied on library functions like Comparator and Streams, which hide the internal working of sorting algorithms.
+In UC16, sorting was implemented manually using Bubble Sort, which is inefficient (O(n²)) and not suitable for real-world applications.
 
 ### Solution
 
-Implement Bubble Sort manually using nested loops and swapping logic.
+Use Arrays.sort() for fast and reliable sorting.
 
 ### Flow of Execution
 
-1. User provides bogie capacities
-2. System iterates through the array
-3. Adjacent elements are compared
-4. If out of order, elements are swapped
-5. Multiple passes ensure sorting
-6. Sorted result is displayed
+1. User provides bogie names
+2. System calls Arrays.sort()
+3. Java sorts the array internally
+4. Sorted result is displayed
 
 ### Key Concepts Used
 
-* **Bubble Sort Algorithm**
+* **Arrays.sort()**
 
-  * Repeatedly compares and swaps adjacent elements
+  * Built-in method for sorting arrays
 
-* **Array Manipulation**
+* **Natural Ordering**
 
-  * Direct index-based access
-
-* **Nested Loops**
-
-  * Outer loop for passes, inner loop for comparisons
-
-* **Swapping Logic**
-
-  * Uses temporary variable
+  * Strings sorted alphabetically
 
 * **Time Complexity**
 
-  * O(n²) for worst and average cases
+  * O(n log n)
+
+* **Library Optimization**
+
+  * Uses efficient internal algorithms
+
+* **Readable Code**
+
+  * Minimal and clean implementation
 
 ### Code Summary
 
-* Array of capacities initialized
-* Nested loops applied
-* Adjacent elements compared and swapped
-* Final sorted array printed
+* String array initialized
+* Arrays.sort() applied
+* Output displayed using Arrays.toString()
 
 ### Key Benefits
 
-* Builds algorithmic understanding
-* Strengthens logic building skills
-* Prepares for advanced sorting techniques
-* Bridges theory and implementation
+* Faster than manual sorting
+* Cleaner and shorter code
+* Reliable and optimized
+* Suitable for real-world applications
 
 ### Output
 
-```text id="uc16output02"
-Sorted Capacities (Ascending): 24 56 60 70 72
+```text id="uc17output02"
+[AC Chair, First Class, General, Luxury, Sleeper]
 ```
 
 ### Conclusion
 
-This use case demonstrates how sorting works internally, providing a strong foundation before using optimized library methods.
+This use case demonstrates the transition from manual algorithm implementation to efficient use of built-in Java utilities for production-ready code.
