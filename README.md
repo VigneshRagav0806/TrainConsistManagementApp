@@ -1,69 +1,72 @@
-## UC17: Sort Bogie Names Using Arrays.sort()
+## UC18: Linear Search for Bogie ID (Array-Based Searching)
 
 ### Overview
 
-This use case introduces Java's built-in sorting mechanism using Arrays.sort() to efficiently sort bogie names.
+This use case introduces Linear Search to locate a specific bogie ID in an unsorted list.
 
 ### Objective
 
-To sort bogie type names alphabetically using Java’s optimized library function.
+To search for a bogie ID by traversing the array sequentially.
 
 ### Drawback of Previous Approach
 
-In UC16, sorting was implemented manually using Bubble Sort, which is inefficient (O(n²)) and not suitable for real-world applications.
+In UC17, data was sorted, but there was no way to locate a specific bogie quickly.
 
 ### Solution
 
-Use Arrays.sort() for fast and reliable sorting.
+Use Linear Search to check each element until a match is found.
 
 ### Flow of Execution
 
-1. User provides bogie names
-2. System calls Arrays.sort()
-3. Java sorts the array internally
-4. Sorted result is displayed
+1. User provides bogie ID to search
+2. System traverses array sequentially
+3. Each element is compared using equals()
+4. If match found → search stops
+5. Result is displayed
 
 ### Key Concepts Used
 
-* **Arrays.sort()**
+* **Linear Search**
 
-  * Built-in method for sorting arrays
+  * Sequential search technique
 
-* **Natural Ordering**
+* **Sequential Traversal**
 
-  * Strings sorted alphabetically
+  * Checks elements one by one
 
-* **Time Complexity**
+* **equals() Method**
 
-  * O(n log n)
+  * Safe string comparison
 
-* **Library Optimization**
+* **Early Termination**
 
-  * Uses efficient internal algorithms
+  * Stops when match is found
 
-* **Readable Code**
+* **Unsorted Data Handling**
 
-  * Minimal and clean implementation
+  * Works without sorting
 
 ### Code Summary
 
-* String array initialized
-* Arrays.sort() applied
-* Output displayed using Arrays.toString()
+* Array of bogie IDs created
+* User input taken
+* Loop iterates through array
+* Match checked using equals()
+* Result displayed
 
 ### Key Benefits
 
-* Faster than manual sorting
-* Cleaner and shorter code
-* Reliable and optimized
-* Suitable for real-world applications
+* Simple and easy to implement
+* Works on unsorted data
+* Builds search fundamentals
+* Prepares for optimized search algorithms
 
 ### Output
 
-```text id="uc17output02"
-[AC Chair, First Class, General, Luxury, Sleeper]
+```text id="uc18output03"
+Bogie found at position: 2
 ```
 
 ### Conclusion
 
-This use case demonstrates the transition from manual algorithm implementation to efficient use of built-in Java utilities for production-ready code.
+This use case introduces fundamental searching logic, enabling the system to locate specific bogies efficiently.
