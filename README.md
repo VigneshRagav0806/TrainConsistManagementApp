@@ -1,77 +1,72 @@
-## UC15: Safe Cargo Assignment Using try-catch-finally
+## UC16: Sort Passenger Bogies by Capacity (Bubble Sort – Algorithm Intro)
 
 ### Overview
 
-This use case introduces runtime exception handling to safely manage cargo assignments in goods bogies.
+This use case introduces manual sorting using the Bubble Sort algorithm to help understand how sorting works internally.
 
 ### Objective
 
-To prevent unsafe cargo assignments and handle them gracefully without crashing the system.
+To sort passenger bogie capacities using a basic comparison-based algorithm without using built-in methods.
 
 ### Drawback of Previous Approach
 
-In UC14, validation occurred during object creation. However, runtime operations such as cargo assignment were not protected.
+Earlier use cases relied on library functions like Comparator and Streams, which hide the internal working of sorting algorithms.
 
 ### Solution
 
-Use try-catch-finally to handle unsafe conditions dynamically.
+Implement Bubble Sort manually using nested loops and swapping logic.
 
 ### Flow of Execution
 
-1. User assigns cargo to a bogie
-2. System checks safety rules
-3. If unsafe → exception is thrown
-4. Exception is caught and handled
-5. finally block executes
-6. Program continues execution
+1. User provides bogie capacities
+2. System iterates through the array
+3. Adjacent elements are compared
+4. If out of order, elements are swapped
+5. Multiple passes ensure sorting
+6. Sorted result is displayed
 
 ### Key Concepts Used
 
-* **try-catch-finally**
+* **Bubble Sort Algorithm**
 
-  * Structured exception handling
+  * Repeatedly compares and swaps adjacent elements
 
-* **Runtime Exception**
+* **Array Manipulation**
 
-  * Unchecked exception for runtime errors
+  * Direct index-based access
 
-* **Custom Exception**
+* **Nested Loops**
 
-  * CargoSafetyException for domain-specific errors
+  * Outer loop for passes, inner loop for comparisons
 
-* **throw**
+* **Swapping Logic**
 
-  * Signals unsafe condition
+  * Uses temporary variable
 
-* **Graceful Failure Handling**
+* **Time Complexity**
 
-  * Prevents crashes
-
-* **finally Block**
-
-  * Executes regardless of success or failure
+  * O(n²) for worst and average cases
 
 ### Code Summary
 
-* GoodsBogie class created
-* assignCargo() method contains try-catch-finally
-* Unsafe assignment throws exception
-* Exception is handled without stopping program
-* finally block logs completion
+* Array of capacities initialized
+* Nested loops applied
+* Adjacent elements compared and swapped
+* Final sorted array printed
 
 ### Key Benefits
 
-* Prevents application crashes
-* Handles runtime errors safely
-* Ensures system continuity
-* Demonstrates defensive coding practices
+* Builds algorithmic understanding
+* Strengthens logic building skills
+* Prepares for advanced sorting techniques
+* Bridges theory and implementation
 
 ### Output
 
-```text id="uc15output02"
-Error: Unsafe Assignment: Rectangular bogie cannot carry Petroleum
+```text id="uc16output02"
+Sorted Capacities (Ascending): 24 56 60 70 72
 ```
 
 ### Conclusion
 
-This use case ensures that runtime errors are handled gracefully, maintaining system stability and reliability during operations.
+This use case demonstrates how sorting works internally, providing a strong foundation before using optimized library methods.
