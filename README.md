@@ -1,74 +1,74 @@
-## UC12: Safety Compliance Check for Goods Bogies
+## UC13: Performance Comparison (Loops vs Streams)
 
 ### Overview
 
-This use case introduces safety validation for goods bogies using Stream API and business rules.
+This use case compares the performance of loop-based and stream-based filtering using precise time measurement.
 
 ### Objective
 
-To ensure that cylindrical bogies carry only petroleum cargo.
+To measure execution time of two different approaches and make evidence-based decisions.
 
 ### Drawback of Previous Approach
 
-Earlier use cases did not enforce domain-specific rules, allowing unsafe cargo configurations.
+In UC12, Streams were used for clean logic, but no performance comparison was done. Developers may incorrectly assume Streams are always faster.
 
 ### Solution
 
-Use stream-based validation with allMatch() and conditional logic.
+Use System.nanoTime() to benchmark both loop and stream approaches.
 
 ### Flow of Execution
 
-1. User creates a list of goods bogies
-2. List is converted into a stream
-3. allMatch() applies safety rules
-4. If all bogies satisfy rules → SAFE
-5. Else → NOT SAFE
+1. User runs the program
+2. Large dataset of bogies is created
+3. Loop-based filtering is executed and timed
+4. Stream-based filtering is executed and timed
+5. Execution times are compared
+6. Results are displayed
 
 ### Key Concepts Used
 
-* **Streams API**
+* **System.nanoTime()**
 
-  * Declarative processing of collections
+  * High precision time measurement
 
-* **allMatch()**
+* **Loop-Based Processing**
 
-  * Checks if all elements satisfy condition
+  * Traditional iteration using for-each loop
 
-* **Lambda Expressions**
+* **Stream API**
 
-  * Defines rule logic inline
+  * Declarative filtering using filter()
 
-* **Conditional Logic**
+* **Performance Benchmarking**
 
-  * Enforces domain constraints
+  * Measuring execution time
 
-* **Short-Circuit Evaluation**
+* **Evidence-Based Optimization**
 
-  * Stops on first failure
+  * Making decisions based on actual results
 
 ### Code Summary
 
-* GoodsBogie class created
-* List of bogies initialized
-* Stream applied
-* Condition:
-
-  * Cylindrical → only Petroleum allowed
-* Boolean result determines safety
+* Large list of bogies created
+* Loop filters bogies with capacity > 60
+* Stream filters bogies with same condition
+* Execution time measured using nanoTime()
+* Results compared
 
 ### Key Benefits
 
-* Prevents unsafe configurations
-* Enforces real-world constraints
-* Improves system reliability
-* Demonstrates domain-driven logic
+* Demonstrates real performance differences
+* Encourages measurement over assumptions
+* Teaches benchmarking techniques
+* Builds optimization mindset
 
 ### Output
 
-```text id="uc12output03"
-Train is SAFETY COMPLIANT.
+```text
+Loop Execution Time: XXXXX ns
+Stream Execution Time: XXXXX ns
 ```
 
 ### Conclusion
 
-This use case ensures that the system enforces critical safety rules, making it suitable for real-world railway logistics scenarios.
+This use case emphasizes that performance decisions should be based on measurement rather than assumptions, balancing readability and efficiency.
