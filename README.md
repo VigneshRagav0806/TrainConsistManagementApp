@@ -1,79 +1,72 @@
-# TrainConsistManagementApp
-## UC1: Initialize Train and Display Consist Summary
+## UC18: Linear Search for Bogie ID (Array-Based Searching)
 
 ### Overview
 
-This use case demonstrates the initialization phase of the Train Consist Management Application. It sets up the foundational structure required to manage train bogies dynamically.
+This use case introduces Linear Search to locate a specific bogie ID in an unsorted list.
 
 ### Objective
 
-To initialize an empty train consist and display its initial state to the user.
+To search for a bogie ID by traversing the array sequentially.
+
+### Drawback of Previous Approach
+
+In UC17, data was sorted, but there was no way to locate a specific bogie quickly.
+
+### Solution
+
+Use Linear Search to check each element until a match is found.
 
 ### Flow of Execution
 
-1. User runs the application
-2. System displays a welcome message
-3. Train consist is initialized as an empty collection
-4. Initial bogie count is displayed
-5. Application remains active for further operations
+1. User provides bogie ID to search
+2. System traverses array sequentially
+3. Each element is compared using equals()
+4. If match found → search stops
+5. Result is displayed
 
 ### Key Concepts Used
 
-* **Class**
+* **Linear Search**
 
-    * The entire application logic is encapsulated inside a Java class (`TrainApp`)
+  * Sequential search technique
 
-* **Main Method**
+* **Sequential Traversal**
 
-    * Entry point of the program:
+  * Checks elements one by one
 
-      ```java
-      public static void main(String[] args)
-      ```
+* **equals() Method**
 
-* **Static Keyword**
+  * Safe string comparison
 
-    * Allows the JVM to call `main()` without creating an object
+* **Early Termination**
 
-* **ArrayList**
+  * Stops when match is found
 
-    * Used to dynamically store bogies
-    * Allows resizing at runtime unlike fixed arrays
+* **Unsorted Data Handling**
 
-* **List Interface**
-
-    * Provides abstraction for working with different list implementations
-
-* **Console Output**
-
-    * `System.out.println()` is used to display messages
-
-* **Dynamic Initialization**
-
-    * An empty `ArrayList` is created which will later store bogies
+  * Works without sorting
 
 ### Code Summary
 
-* A List is created using `ArrayList`
-* No bogies are added initially
-* `size()` method is used to display count (which is 0)
+* Array of bogie IDs created
+* User input taken
+* Loop iterates through array
+* Match checked using equals()
+* Result displayed
 
 ### Key Benefits
 
-* Establishes the starting point of the application
-* Demonstrates program execution flow
-* Highlights the importance of dynamic data structures
-* Prepares the system for future operations like adding passenger or goods bogies
+* Simple and easy to implement
+* Works on unsorted data
+* Builds search fundamentals
+* Prepares for optimized search algorithms
 
 ### Output
 
-```
-=== Train Consist Management App ===
-Train consist initialized successfully.
-Initial number of bogies: 0
-System is ready for further operations...
+```text id="uc18output03"
+Bogie found at position: 2
 ```
 
 ### Conclusion
 
-This use case lays the groundwork for the Train Consist Management System by initializing the core data structure and verifying that the application starts correctly.
+This use case introduces fundamental searching logic, enabling the system to locate specific bogies efficiently.

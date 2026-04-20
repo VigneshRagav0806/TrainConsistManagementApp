@@ -1,21 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class TrainApp {
 
     public static void main(String[] args) {
 
-        // Welcome Message
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize Train Consist (Empty List)
-        List<String> trainConsist = new ArrayList<>();
+        // Array of bogie IDs (unsorted)
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        // Display Initial Bogie Count
-        System.out.println("Train consist initialized successfully.");
-        System.out.println("Initial number of bogies: " + trainConsist.size());
+        // User input
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nEnter Bogie ID to search: ");
+        String searchKey = sc.nextLine();
 
-        // Program continues (future use cases will add bogies)
-        System.out.println("System is ready for further operations...");
+        // Linear Search
+        boolean found = false;
+
+        for (int i = 0; i < bogieIds.length; i++) {
+            if (bogieIds[i].equals(searchKey)) {
+                found = true;
+                System.out.println("Bogie found at position: " + i);
+                break; // Early termination
+            }
+        }
+
+        if (!found) {
+            System.out.println("Bogie ID not found.");
+        }
+
+        System.out.println("\nSearch operation completed.");
+
+        sc.close();
     }
 }
